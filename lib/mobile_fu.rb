@@ -2,13 +2,7 @@ module ActionController
   module MobileFu
     # These are various strings that can be found in mobile devices.  Please feel free
     # to add on to this list.
-    MOBILE_USER_AGENTS =  'palm|blackberry|nokia|phone|midp|mobi|symbian|chtml|ericsson|minimo|' +
-                          'audiovox|motorola|samsung|telit|upg1|windows ce|ucweb|astel|plucker|' +
-                          'x320|x240|j2me|sgh|portable|sprint|docomo|kddi|softbank|android|mmp|' +
-                          'pdxgw|netfront|xiino|vodafone|portalmmm|sagem|mot-|sie-|ipod|up\\.b|' +
-                          'webos|amoi|novarra|cdm|alcatel|pocket|ipad|iphone|mobileexplorer|' +
-                          'mobile'
-    
+        
     def self.included(base)
       base.extend(ClassMethods)
     end
@@ -84,7 +78,7 @@ module ActionController
       # the device making the request is matched to a device in our regex.
       
       def is_mobile_device?
-        request.user_agent.to_s.downcase =~ Regexp.new(ActionController::MobileFu::MOBILE_USER_AGENTS)
+        request.user_agent.to_s.downcase =~ Regexp.new(MOBILE_USER_AGENTS)
       end
 
       # Can check for a specific user agent
